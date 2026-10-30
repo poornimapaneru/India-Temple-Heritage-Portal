@@ -1,0 +1,811 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8f5ef;
+  color: #2f241d;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Header */
+
+header {
+  background: #6b3f20;
+  color: white;
+}
+
+/* Navbar */
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+/* Header Content */
+
+.header-content {
+  text-align: center;
+  padding: 35px 20px 45px;
+}
+
+.header-content h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.header-content p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Main / Hero */
+
+main {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.hero-section {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  background: white;
+  padding: 65px 45px;
+  border-radius: 16px;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
+}
+
+.hero-label {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: #c47a32;
+}
+
+.hero-section h2 {
+  margin: 0 auto 18px;
+  max-width: 700px;
+  font-size: 38px;
+  line-height: 1.2;
+  color: #6b3f20;
+}
+
+.hero-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-size: 17px;
+  color: #5c5149;
+}
+
+/* Hero Buttons */
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+button {
+  margin-top: 0;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 7px;
+  background: #c47a32;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #a96328;
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  background: transparent;
+  color: #6b3f20;
+  border: 1px solid #c47a32;
+}
+
+.secondary-button:hover {
+  background: #f8eee3;
+}
+
+/* Search & Filter */
+
+.search-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 25px 70px;
+}
+
+.search-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr auto;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-box input,
+.search-box select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d8c8b8;
+  border-radius: 7px;
+  background: white;
+  color: #2f241d;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-box input:focus,
+.search-box select:focus {
+  border-color: #c47a32;
+}
+
+.search-box button {
+  white-space: nowrap;
+}
+
+.search-result-count {
+  text-align: center;
+  margin: 18px 0 0;
+  color: #6b3f20;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Featured Temples */
+
+.featured-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 25px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-heading span {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: #c47a32;
+}
+
+.section-heading h2 {
+  margin: 10px 0;
+  font-size: 34px;
+  color: #6b3f20;
+}
+
+.section-heading p {
+  margin: 0 auto;
+  max-width: 650px;
+  line-height: 1.6;
+  color: #5c5149;
+}
+
+.temple-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.temple-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.temple-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.temple-image {
+  height: 180px;
+  overflow: hidden;
+  background: #e8d4bd;
+}
+
+.temple-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.temple-content {
+  padding: 22px;
+}
+
+.temple-content h3 {
+  margin: 0 0 8px;
+  color: #6b3f20;
+  font-size: 21px;
+}
+
+.temple-content p {
+  line-height: 1.6;
+  color: #5c5149;
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.temple-content button {
+  margin-top: 12px;
+}
+
+/* Popular Pilgrimage Circuits */
+
+.pilgrimage-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 25px;
+}
+
+.pilgrimage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.pilgrimage-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pilgrimage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.pilgrimage-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f8eee3;
+  color: #c47a32;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.pilgrimage-card h3 {
+  margin: 0 0 12px;
+  color: #6b3f20;
+  font-size: 21px;
+}
+
+.pilgrimage-card p {
+  margin: 8px 0;
+  line-height: 1.6;
+  color: #5c5149;
+  font-size: 15px;
+}
+
+.pilgrimage-card strong {
+  display: block;
+  margin-top: 18px;
+  color: #6b3f20;
+  font-size: 14px;
+}
+
+/* Festival Highlights */
+
+.festival-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 25px;
+}
+
+.festival-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.festival-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.festival-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.festival-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f8eee3;
+  color: #c47a32;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.festival-card h3 {
+  margin: 0 0 10px;
+  color: #6b3f20;
+  font-size: 21px;
+}
+
+.festival-card strong {
+  display: block;
+  margin-bottom: 12px;
+  color: #8a5a35;
+  font-size: 14px;
+}
+
+.festival-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #5c5149;
+  font-size: 15px;
+}
+
+/* About Section */
+
+.about-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 25px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.about-text,
+.about-features {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.about-text {
+  border-top: 4px solid #c47a32;
+}
+
+.about-text h3 {
+  margin: 0 0 15px;
+  color: #6b3f20;
+  font-size: 24px;
+}
+
+.about-text p {
+  margin: 0 0 15px;
+  line-height: 1.7;
+  color: #5c5149;
+  font-size: 15px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 18px;
+  background: #f8f5ef;
+  border-radius: 10px;
+}
+
+.about-feature > span {
+  min-width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f8eee3;
+  color: #c47a32;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.about-feature h3 {
+  margin: 0 0 6px;
+  color: #6b3f20;
+  font-size: 17px;
+}
+
+.about-feature p {
+  margin: 0;
+  line-height: 1.5;
+  color: #5c5149;
+  font-size: 14px;
+}
+
+/* Temple Details */
+
+.temple-details-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 25px 70px;
+}
+
+.temple-details {
+  background: white;
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.08);
+}
+
+.back-button {
+  background: transparent;
+  color: #6b3f20;
+  border: 1px solid #c47a32;
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+.back-button:hover {
+  background: #f8eee3;
+  color: #6b3f20;
+}
+
+.temple-details-header {
+  text-align: center;
+  padding: 25px 10px 35px;
+  border-bottom: 1px solid #eadfd3;
+}
+
+.temple-details-header .hero-label {
+  margin-bottom: 10px;
+}
+
+.temple-details-header h2 {
+  margin: 0 0 10px;
+  font-size: 36px;
+  color: #6b3f20;
+}
+
+.temple-details-header p {
+  margin: 0;
+  color: #5c5149;
+  font-size: 16px;
+}
+
+.temple-details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  padding-top: 30px;
+}
+
+.detail-block {
+  background: #f8f5ef;
+  padding: 22px;
+  border-radius: 10px;
+  border-left: 4px solid #c47a32;
+}
+
+.detail-block h3 {
+  margin: 0 0 10px;
+  color: #6b3f20;
+  font-size: 20px;
+}
+
+.detail-block p {
+  margin: 0;
+  line-height: 1.7;
+  color: #5c5149;
+  font-size: 15px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .temple-grid,
+  .pilgrimage-grid,
+  .festival-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-box button {
+    width: 100%;
+  }
+
+  .temple-details-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    padding: 18px 15px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .header-content {
+    padding: 25px 15px 35px;
+  }
+
+  .header-content h1 {
+    font-size: 26px;
+  }
+
+  .header-content p {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 30px 15px;
+  }
+
+  .hero-section {
+    padding: 40px 20px;
+  }
+
+  .hero-section h2 {
+    font-size: 28px;
+  }
+
+  .hero-section p {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .search-section {
+    padding: 20px 15px 50px;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .featured-section,
+  .pilgrimage-section,
+  .festival-section,
+  .about-section {
+    padding: 50px 15px;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .about-text,
+  .about-features {
+    padding: 22px;
+  }
+
+  .about-feature {
+    padding: 15px;
+  }
+
+  .temple-details-section {
+    padding: 20px 15px 50px;
+  }
+
+  .temple-details {
+    padding: 20px;
+  }
+
+  .temple-details-header h2 {
+    font-size: 28px;
+  }
+
+  .temple-details-content {
+    gap: 15px;
+    padding-top: 20px;
+  }
+
+  .detail-block {
+    padding: 18px;
+  }
+
+  .detail-block h3 {
+    font-size: 18px;
+  }
+}
+
+/* Accommodation & Transport */
+
+.facilities-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 25px;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.facility-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.facility-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f8eee3;
+  color: #c47a32;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.facility-card h3 {
+  margin: 0 0 12px;
+  color: #6b3f20;
+  font-size: 21px;
+}
+
+.facility-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: #5c5149;
+  font-size: 15px;
+}
+
+/* Footer */
+
+.footer {
+  background: #6b3f20;
+  color: white;
+  margin-top: 20px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 45px 25px;
+  text-align: center;
+}
+
+.footer-content h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.footer-content p {
+  margin: 0 auto;
+  max-width: 600px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.footer-copy {
+  margin-top: 20px !important;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 13px !important;
+}
+
+.hero-link {
+  display: inline-block;
+  padding: 13px 25px;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 16px;
+}
