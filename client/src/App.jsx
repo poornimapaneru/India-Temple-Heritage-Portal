@@ -70,7 +70,7 @@ function App() {
     const fetchTemples = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5000/api/temples'
+          'https://india-temple-heritage-portal.onrender.com/api/temples'
         )
 
         if (!response.ok) {
