@@ -17,7 +17,7 @@ function UserAuth({ onAuthSuccess, onClose }) {
       const endpoint = isLogin ? 'login' : 'register'
 
       const response = await fetch(
-        `http://localhost:5000/api/users/${endpoint}`,
+        `https://india-temple-heritage-portal.onrender.com/api/users/${endpoint}`,
         {
           method: 'POST',
           headers: {
