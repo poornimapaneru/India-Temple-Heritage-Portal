@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import AdminLogin from './AdminLogin'
 import AdminDashboard from './AdminDashboard'
+import UserAuth from './UserAuth'
 
 function App() {
   const [temples, setTemples] = useState([])
@@ -15,7 +16,16 @@ function App() {
   })
 
   const [showAdminLogin, setShowAdminLogin] = useState(false)
+  const [showUserAuth, setShowUserAuth] = useState(false)
   const [admin, setAdmin] = useState(null)
+
+  const [user, setUser] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('currentUser')) || null
+    } catch {
+      return null
+    }
+  })
 
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedState, setSelectedState] = useState('')
@@ -66,6 +76,7 @@ function App() {
     },
   ]
 
+  // Fetch Temples
   useEffect(() => {
     const fetchTemples = async () => {
       try {
@@ -88,6 +99,18 @@ function App() {
     fetchTemples()
   }, [])
 
+  // User Logout
+  const handleUserLogout = () => {
+    localStorage.removeItem('userToken')
+    localStorage.removeItem('currentUser')
+
+    setUser(null)
+    setShowUserAuth(false)
+
+    alert('You have been logged out successfully.')
+  }
+
+  // Save Temple
   const handleSaveTemple = (temple) => {
     const isSaved = savedTemples.some(
       (saved) => saved._id === temple._id
@@ -107,6 +130,7 @@ function App() {
     )
   }
 
+  // Share Temple
   const handleShareTemple = async (temple) => {
     const shareText = `Explore ${temple.name} in ${temple.city}, ${temple.state} on India Temple Heritage.`
     const shareUrl = window.location.href
@@ -134,6 +158,7 @@ function App() {
     }
   }
 
+  // Temple Search
   const handleSearch = () => {
     const results = temples.filter((temple) => {
       const matchesName = temple.name
@@ -160,10 +185,12 @@ function App() {
     setFilteredTemples(results)
   }
 
+  // Temple Details
   const handleViewDetails = (temple) => {
     setSelectedTemple(temple)
   }
 
+  // Admin Dashboard
   if (admin) {
     return (
       <AdminDashboard
@@ -177,6 +204,7 @@ function App() {
     )
   }
 
+  // Admin Login
   if (showAdminLogin) {
     return (
       <AdminLogin
@@ -190,6 +218,7 @@ function App() {
 
   return (
     <div>
+      {/* Header */}
       <header>
         <nav className="navbar">
           <div className="logo">India Temple Heritage</div>
@@ -201,6 +230,24 @@ function App() {
             <a href="#festivals">Festivals</a>
             <a href="#about">About</a>
 
+            {/* User Login / Logout */}
+            {user ? (
+              <>
+                <span className="user-welcome">
+                  Welcome, {user.name}
+                </span>
+
+                <button onClick={handleUserLogout}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button onClick={() => setShowUserAuth(true)}>
+                User Login / Sign Up
+              </button>
+            )}
+
+            {/* Admin Login */}
             <button onClick={() => setShowAdminLogin(true)}>
               Admin Login
             </button>
@@ -215,6 +262,7 @@ function App() {
         </div>
       </header>
 
+      {/* Hero Section */}
       <main id="home">
         <section className="hero-section">
           <span className="hero-label">
@@ -244,6 +292,7 @@ function App() {
         </section>
       </main>
 
+      {/* Search Section */}
       <section className="search-section">
         <div className="section-heading">
           <span>FIND YOUR TEMPLE</span>
@@ -326,6 +375,7 @@ function App() {
         </p>
       </section>
 
+      {/* Featured Temples */}
       <section className="featured-section" id="temples">
         <div className="section-heading">
           <span>HERITAGE DESTINATIONS</span>
@@ -395,6 +445,7 @@ function App() {
         </div>
       </section>
 
+      {/* Pilgrimage Circuits */}
       <section className="pilgrimage-section" id="pilgrimage">
         <div className="section-heading">
           <span>PILGRIMAGE JOURNEYS</span>
@@ -419,6 +470,7 @@ function App() {
         </div>
       </section>
 
+      {/* Festivals */}
       <section className="festival-section" id="festivals">
         <div className="section-heading">
           <span>FESTIVAL CALENDAR</span>
@@ -442,6 +494,7 @@ function App() {
         </div>
       </section>
 
+      {/* Accommodation & Transport */}
       <section className="facilities-section">
         <div className="section-heading">
           <span>PILGRIM SUPPORT</span>
@@ -486,6 +539,7 @@ function App() {
         </div>
       </section>
 
+      {/* About */}
       <section className="about-section" id="about">
         <div className="section-heading">
           <span>ABOUT THE PORTAL</span>
@@ -554,6 +608,7 @@ function App() {
         </div>
       </section>
 
+      {/* Temple Details */}
       {selectedTemple && (
         <section className="temple-details-section">
           <div className="temple-details">
@@ -620,6 +675,7 @@ function App() {
         </section>
       )}
 
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <h3>India Temple Heritage</h3>
@@ -634,6 +690,17 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* User Login / Registration Popup */}
+      {showUserAuth && (
+        <UserAuth
+          onAuthSuccess={(userData) => {
+            setUser(userData)
+            setShowUserAuth(false)
+          }}
+          onClose={() => setShowUserAuth(false)}
+        />
+      )}
     </div>
   )
 }

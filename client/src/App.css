@@ -809,3 +809,125 @@ button:hover {
   border-radius: 7px;
   font-size: 16px;
 }
+
+/* User Registration & Login */
+
+.user-auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(47, 36, 29, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.user-auth-box {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.user-auth-box h2 {
+  margin: 0 0 12px;
+  color: #6b3f20;
+  font-size: 28px;
+}
+
+.user-auth-box > p {
+  color: #5c5149;
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.user-auth-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: auto;
+  padding: 8px 12px;
+  background: #f8eee3;
+  color: #6b3f20;
+  font-size: 17px;
+}
+
+.user-auth-close:hover {
+  background: #ead8c5;
+}
+
+.user-auth-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-auth-box input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d8c8b8;
+  border-radius: 7px;
+  font-size: 15px;
+  outline: none;
+}
+
+.user-auth-box input:focus {
+  border-color: #c47a32;
+  box-shadow: 0 0 0 2px rgba(196, 122, 50, 0.12);
+}
+
+.user-auth-box form button {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.user-auth-box form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.user-auth-error {
+  color: #c0392b !important;
+  font-size: 14px !important;
+  margin: 0 !important;
+}
+
+.user-auth-box .user-auth-switch {
+  margin: 22px 0 0;
+  font-size: 14px;
+}
+
+.user-auth-switch button {
+  width: auto;
+  margin-left: 7px;
+  padding: 5px;
+  background: transparent;
+  color: #c47a32;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.user-auth-switch button:hover {
+  background: transparent;
+  color: #6b3f20;
+  transform: none;
+}
+
+/* User Authentication Mobile Design */
+
+@media (max-width: 480px) {
+  .user-auth-box {
+    padding: 35px 20px;
+  }
+
+  .user-auth-box h2 {
+    font-size: 24px;
+  }
+}
